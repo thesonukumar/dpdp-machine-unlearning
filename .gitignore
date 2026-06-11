@@ -1,0 +1,25 @@
+# Virtual environment - never push to GitHub
+dpdp-env/
+venv/
+env/
+.env
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# HuggingFace model cache (too large)
+.cache/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Results and logs (optional, can be pushed if desired)
+results/
+
+# OS files
+.DS_Store
+Thumbs.db

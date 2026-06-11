@@ -1,0 +1,10 @@
+torch
+transformers
+peft
+trl
+datasets
+rouge-score
+scipy
+accelerate
+bitsandbytes
+torchao>=0.16.0
