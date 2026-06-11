@@ -9,7 +9,7 @@ import os
 # The model stays in memory for all subsequent requests.
 # ============================================================
 MODEL_NAME = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
-ADAPTER_PATH = "./adapters"
+ADAPTER_PATH = "."
 
 print("=" * 60)
 print("  DPDP Act Compliance Filter — Initializing...")
