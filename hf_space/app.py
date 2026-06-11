@@ -483,6 +483,7 @@ with gr.Blocks(
                 bubble_full_width=False,
                 show_label=False,
                 height=480,
+                type="messages",
                 avatar_images=(
                     None,  # user avatar (None = default)
                     "https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
@@ -519,22 +520,24 @@ with gr.Blocks(
 
     # ── Event handlers ──────────────────────────────────────
     def user_submit(user_message, history):
-        return "", history + [[user_message, None]]
+        history.append({"role": "user", "content": user_message})
+        history.append({"role": "assistant", "content": ""})
+        return "", history
 
     def bot_respond(history):
-        user_message = history[-1][0]
-        history[-1][1] = ""
-        for token in generate_response(user_message, history[:-1]):
-            history[-1][1] = token
+        user_message = history[-2]["content"]
+        # Pass the history excluding the current turn to generate_response
+        for token in generate_response(user_message, history[:-2]):
+            history[-1]["content"] = token
             yield history
 
-    msg.submit(user_submit, [msg, chatbot], [msg, chatbot], queue=False).then(
-        bot_respond, chatbot, chatbot
+    msg.submit(user_submit, [msg, chatbot], [msg, chatbot], queue=False, api_name=False).then(
+        bot_respond, chatbot, chatbot, api_name=False
     )
-    submit.click(user_submit, [msg, chatbot], [msg, chatbot], queue=False).then(
-        bot_respond, chatbot, chatbot
+    submit.click(user_submit, [msg, chatbot], [msg, chatbot], queue=False, api_name=False).then(
+        bot_respond, chatbot, chatbot, api_name=False
     )
-    clear.click(lambda: [], None, chatbot, queue=False)
+    clear.click(lambda: [], None, chatbot, queue=False, api_name=False)
 
 
 if __name__ == "__main__":
