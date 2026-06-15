@@ -13,6 +13,11 @@
   <b>A production-grade post-training data privacy pipeline that enforces India's DPDP Act 'Right to Erasure'<br>at the neural weight layer — without retraining from scratch.</b>
 </p>
 
+<div align="center">
+  <h3>🔴 <a href="https://huggingface.co/spaces/skmandal/dpdp-compliance-filter">Live Project Showcase (HuggingFace Space)</a></h3>
+  <i>(Recommended for Recruiters: Interactive demonstration of the compliance filter)</i>
+</div>
+
 ---
 
 ## Table of Contents
